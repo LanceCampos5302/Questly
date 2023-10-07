@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
 import QuestSelection from './QuestSelection';
@@ -52,14 +52,24 @@ const QuestPage = () => {
         </View>
       </View>
 
-      {/* Center Content */}
-      <View style={styles.centerContent}>
-        <View style={styles.centerContentRow}>
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-        </View>
-      </View>
+{/* Center Content */}
+<View style={styles.centerContent}>
+  <ScrollView contentContainerStyle={styles.centerContentRow}>
+  <View style={styles.bufferTop}></View>
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <QuestSelection />
+    <View style={styles.bufferBottom}></View>
+  </ScrollView>
+</View>
+
 
       <MenuNav />
     </View>
@@ -93,14 +103,17 @@ const styles = StyleSheet.create({
     height: '80%',
     backgroundColor: 'blue',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingTop: 20,
   },
   centerContentRow: {
     flexDirection: 'column',
     alignItems: 'center', // Center horizontally
     width: '100%',
-    height: 120,
+  },
+  bufferTop: {
+    height: 20,
+  },
+  bufferBottom: {
+    height: 160,
   },
   questNav: {
     position: 'absolute',

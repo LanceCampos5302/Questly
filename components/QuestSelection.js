@@ -10,8 +10,11 @@ const QuestComponent = ({ title, description }) => {
         <Text style={styles.questIcon}>Icon</Text>
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.questTitle}>{title}</Text>
-        <Text style={styles.questDescription}>{description}</Text>
+        <Text style={styles.questTitle}>Wekiva Bear Trail</Text>
+        <View style={styles.questInfoBox}>
+            <Text style={styles.questInfo}>12.5 Miles</Text>
+            <Text style={styles.questInfo}>$$$</Text>
+        </View>
       </View>
     </View>
   );
@@ -21,15 +24,15 @@ export default QuestComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row', // Arrange icon and text horizontally
-    alignItems: 'center', // Vertically center items
+    flexDirection: 'row', 
+    alignItems: 'center', 
     backgroundColor: 'white',
     width: '90%',
-    minHeight: 120,
+    height: 110,
     padding: 10,
     borderRadius: 10,
     marginBottom: 10,
-    elevation: 2, // Add elevation (shadow)
+    elevation: 2,
   },
   iconContainer: {
     backgroundColor: 'lightblue',
@@ -41,14 +44,29 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
   },
+  textContainer: {
+   // backgroundColor: 'red',
+    width: "75%",
+    height: "100%",
+    textAlign: 'center',
+    alignItems: 'center',
+  },
   questTitle: {
-    fontSize: 18,
+    fontSize: 28,
+    paddingTop: '3%',
     fontWeight: 'bold',
     marginBottom: 5,
   },
-  questDescription: {
-    fontSize: 14,
-    color: 'gray',
+  questInfoBox: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '70%',
+    height: '30%',
+   // backgroundColor: globalStyles.primaryColor,
+  },
+  questInfo: {
+    fontSize: 25,
+    fontWeight: 'bold',
   },
 });
 
