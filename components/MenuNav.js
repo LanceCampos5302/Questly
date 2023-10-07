@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
-
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const MenuNav = () => {
   const [selectedSection, setSelectedSection] = useState('Quest'); // Initialize with the 'Quest' section as selected
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  const isQuestPage = route.name === 'QuestPage';
+  const isProfilePage = route.name === 'Profile';
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
+    navigation.navigate(section);
   };
 
   return (
@@ -16,29 +22,29 @@ const MenuNav = () => {
         <TouchableOpacity
           style={[
             styles.navSection,
-            selectedSection === 'Profile' && styles.navCenterSection,
+            isProfilePage && styles.navCenterSection,
           ]}
           onPress={() => handleSectionClick('Profile')}
         >
-          <Text style={[styles.text, selectedSection === 'Profile' && styles.centerText]}>Profile</Text>
+          <Text style={[styles.text, isProfilePage && styles.centerText]}>Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
             styles.navSection,
-            selectedSection === 'Quest' && styles.navCenterSection,
+            isQuestPage && styles.navCenterSection,
           ]}
-          onPress={() => handleSectionClick('Quest')}
+          onPress={() => handleSectionClick('QuestPage')}
         >
-          <Text style={[styles.text, selectedSection === 'Quest' && styles.centerText]}>Quest</Text>
+          <Text style={[styles.text, isQuestPage && styles.centerText]}>Quest</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[
             styles.navSection,
-            selectedSection === 'Radar' && styles.navCenterSection,
+            !isQuestPage && !isProfilePage && styles.navCenterSection,
           ]}
           onPress={() => handleSectionClick('Radar')}
         >
-          <Text style={[styles.text, selectedSection === 'Radar' && styles.centerText]}>Radar</Text>
+          <Text style={[styles.text, !isQuestPage && !isProfilePage && styles.centerText]}>Radar</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -53,7 +59,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '12%',
     bottom: 0,
-    zIndex: 999, 
+    zIndex: 999,
     backgroundColor: globalStyles.primaryColor,
   },
   navBox: {
