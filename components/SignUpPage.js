@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity , KeyboardAvoidingView} from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles'
 //imports needs for login functions
 
@@ -16,8 +16,9 @@ const SignUpPage = () => {
   }
 
   return (
+    
     <View style={[styles.backround]}>
-
+    
     
 
       <Text style={[styles.text]}>Questly</Text>
@@ -50,14 +51,16 @@ const SignUpPage = () => {
         placeholder="Confirm Password"
         onChangeText={setconfirm}
         value={Pass_confirm}
-      />
-      
+      />  
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Sign Up!</Text>
       </TouchableOpacity>
       <Text style={[styles.blue_text]}>Have an account? Log in!</Text>
+       
     </View>
+    
     </View>
+    
   );
 };
 
@@ -110,10 +113,12 @@ const styles = StyleSheet.create({
     marginVertical:30,
     marginBottom: 20,
     borderWidth: 1,
+    backgroundColor: globalStyles.primaryColor,
     padding: 10,
   },
   input: {//box for password
     height: 40,
+    backgroundColor: globalStyles.primaryColor,
     width: 200,
     marginVertical:10,
     marginBottom: 20,
