@@ -1,20 +1,44 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 
 const MenuNav = () => {
+  const [selectedSection, setSelectedSection] = useState('Quest'); // Initialize with the 'Quest' section as selected
+
+  const handleSectionClick = (section) => {
+    setSelectedSection(section);
+  };
+
   return (
     <View style={[resetStyles.resetStyles, styles.container]}>
       <View style={styles.navBox}>
-        <View style={styles.navSection}>
-          <Text style={[styles.text]}>Profile</Text>
-        </View>
-        <View style={styles.navCenterSection}>
-          <Text style={[styles.centerText]}>Quest</Text>
-        </View>
-        <View style={styles.navSection}>
-          <Text style={[styles.text]}>Radar</Text>
-        </View>
+        <TouchableOpacity
+          style={[
+            styles.navSection,
+            selectedSection === 'Profile' && styles.navCenterSection,
+          ]}
+          onPress={() => handleSectionClick('Profile')}
+        >
+          <Text style={[styles.text, selectedSection === 'Profile' && styles.centerText]}>Profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.navSection,
+            selectedSection === 'Quest' && styles.navCenterSection,
+          ]}
+          onPress={() => handleSectionClick('Quest')}
+        >
+          <Text style={[styles.text, selectedSection === 'Quest' && styles.centerText]}>Quest</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.navSection,
+            selectedSection === 'Radar' && styles.navCenterSection,
+          ]}
+          onPress={() => handleSectionClick('Radar')}
+        >
+          <Text style={[styles.text, selectedSection === 'Radar' && styles.centerText]}>Radar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -28,11 +52,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '12%',
     bottom: 0,
-    zIndex: 999, // Ensure it's on top of other content
+    zIndex: 999, 
+    backgroundColor: globalStyles.primaryColor,
   },
   navBox: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // To evenly space the sections
+    justifyContent: 'space-between',
     width: '100%',
     height: '100%',
     fontSize: 30,
