@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
-import QuestSelection from './QuestSelection';
 
-const QuestPage = () => {
+const ProfilePage = () => {
   return (
     <View style={[resetStyles.resetStyles, styles.background]}>
       {/* Top Section */}
@@ -13,28 +12,11 @@ const QuestPage = () => {
         <View style={styles.centeredTextContainer}>
           <Text style={styles.logoText}>Questly</Text>
         </View>
-        
-        {/* QuestNav at the bottom of the Top Section */}
-        <View style={styles.questNav}>
-          <View style={styles.navItem}>
-            <Text style={[styles.text]}>Current</Text>
-          </View>
-          <View style={styles.navItem}>
-            <Text style={[styles.text]}>New</Text>
-          </View>
-          <View style={styles.navItem}>
-            <Text style={[styles.text]}>Past</Text>
-          </View>
-        </View>
       </View>
 
       {/* Center Content */}
       <View style={styles.centerContent}>
-        <View style={styles.centerContentRow}>
-          <QuestSelection></QuestSelection>
-          <QuestSelection></QuestSelection>
-          <QuestSelection></QuestSelection>
-        </View>
+
       </View>
 
       {/* Bottom Block */}
@@ -46,7 +28,7 @@ const QuestPage = () => {
   );
 };
 
-export default QuestPage;
+export default ProfilePage;
 
 const styles = StyleSheet.create({
   background: {
@@ -56,7 +38,7 @@ const styles = StyleSheet.create({
   },
   top: {
     width: '100%',
-    height: '25%',
+    height: '16%',
     backgroundColor: globalStyles.popColor,
     justifyContent: 'center',
     alignItems: 'center',
@@ -70,29 +52,15 @@ const styles = StyleSheet.create({
   },
   centerContent: {
     width: '100%',
-    height: '70%',
+    height: '72%',
     backgroundColor: 'blue',
     justifyContent: 'flex-start',
     alignItems: 'center',
-  },
-  centerContentRow: {
-    flexDirection: 'colum',
-    width: '100%',
-    height: 120,
   },
   bottomBlock: {
     width: '100%',
     height: '20%',
     backgroundColor: '#fff',
-  },
-  questNav: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    height: '35%',
-    backgroundColor: globalStyles.secondaryColor,
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   navItem: {
     flex: 1,

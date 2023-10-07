@@ -4,11 +4,12 @@ import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import MenuPage from './components/MenuPage';
 import QuestPage from './components/QuestPage';
+import ProfilePage from './components/ProfilePage';
 
 export default function App() {
   return (
     <View style={styles.container}>
-        <QuestPage></QuestPage>
+        <ProfilePage></ProfilePage>
         <StatusBar style="auto" />
     </View>
   );
