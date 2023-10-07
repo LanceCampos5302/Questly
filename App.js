@@ -7,8 +7,7 @@ import MenuPage from './components/MenuPage';
 export default function App() {
   return (
     <View style={styles.container}>
-        <LoginPage></LoginPage>
-        
+        <MenuPage></MenuPage>
         <StatusBar style="auto" />
     </View>
   );

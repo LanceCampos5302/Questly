@@ -6,14 +6,14 @@ const MenuNav = () => {
   return (
     <View style={[resetStyles.resetStyles, styles.background]}>
       <View style={styles.text}>
-        <View style={styles.navIcon}>
+        <View style={styles.navSection}>
           <Text>Profile</Text>
         </View>
-        <View style={styles.navCenterIcon}>
+        <View style={styles.navMidSection}>
           <Text>Quest</Text>
         </View>
-        <View style={styles.navIcon}>
-          <Text>Near Me</Text>
+        <View style={styles.navSection}>
+          <Text>Radar</Text>
         </View>
       </View>
     </View>
@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  navIcon: {
+  navSection: {
     flex: 1,
     height: '100%',
     backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  navCenterIcon: {
+  navMidSection: {
     flex: 1,
     height: '100%',
     backgroundColor: 'red',
@@ -52,6 +52,5 @@ const styles = StyleSheet.create({
     height: '100%',
     fontSize: 30,
     fontWeight: 'bold',
-    color: globalStyles.secondaryColor,
   },
 });
