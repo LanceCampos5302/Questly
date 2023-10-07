@@ -8,7 +8,7 @@ import QuestPage from './components/QuestPage';
 export default function App() {
   return (
     <View style={styles.container}>
-        <QuestPage></QuestPage>
+        <SignUpPage></SignUpPage>
         <StatusBar style="auto" />
     </View>
   );

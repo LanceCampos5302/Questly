@@ -10,6 +10,7 @@ const LoginPage = () => {
 
   const handleLogin = () => {
     // Here you can call your API to log in the user with username and password
+    
     console.log(username, password);
   }
 
