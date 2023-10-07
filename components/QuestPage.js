@@ -6,26 +6,32 @@ import MenuNav from './MenuNav';
 const QuestPage = () => {
   return (
     <View style={[resetStyles.resetStyles, styles.background]}>
-
-        <View style={[styles.top]}>
-            <Text style={styles.text}></Text>
-            <View style={styles.questNav}>
-                <View style={styles.navItem}>
-                    <Text>Current</Text>
-                </View>
-                <View style={styles.navItem}>
-                    <Text>New</Text>
-                </View>
-                <View style={styles.navItem}>
-                    <Text>Past</Text>
-                </View>
-            </View>
+      {/* Top Section */}
+      <View style={styles.top}>
+        <Text style={styles.logoText}>...........</Text>
+        <View style={styles.questNav}>
+          <View style={styles.navItem}>
+            <Text style={[styles.text]}>Current</Text>
+          </View>
+          <View style={styles.navItem}>
+            <Text style={[styles.text]}>New</Text>
+          </View>
+          <View style={styles.navItem}>
+            <Text style={[styles.text]}>Past</Text>
+          </View>
         </View>
+      </View>
 
-    
+      {/* Center Content */}
+      <View style={styles.centerContent}>
+        <Text>..............</Text>
+      </View>
 
-      
-      <MenuNav></MenuNav>
+      {/* Bottom Block */}
+      <View style={styles.bottomBlock}></View>
+
+      {/* MenuNav */}
+      <MenuNav />
     </View>
   );
 };
@@ -37,21 +43,31 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: globalStyles.popColor,
+  },
+  top: {
+    width: '100%',
+    height: '20%', // Adjust the height as needed
+    backgroundColor: globalStyles.popColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  top:{
-    position: 'absolute',
-    top: "0%",
+  centerContent: {
     width: '100%',
-    height: '30%',
-    flex: 1,
+    height: '60%', // Adjust the height as needed
+    backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: globalStyles.errorColor,
+    borderColor: 'red',       // Set border color to red
+    borderWidth: 2,          // Set border width (adjust as needed)
+    borderStyle: 'dashed', 
+  },
+  bottomBlock: {
+    width: '100%',
+    height: '20%', // Adjust the height as needed
+    backgroundColor: '#fff',
   },
   questNav: {
-    height: '30%',
+    height: '38%',
     backgroundColor: globalStyles.secondaryColor,
     flexDirection: 'row',
     alignItems: 'center',
@@ -62,9 +78,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 5,
+    fontSize: 30,
+  },
+  logoText: {
+    fontSize: 60,
     fontWeight: 'bold',
+    paddingBottom: '5%',
     color: globalStyles.secondaryColor,
-    marginTop: '10%', // Add some top margin to create space below questNav
+    marginTop: '10%',
   },
 });

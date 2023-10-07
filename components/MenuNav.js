@@ -4,7 +4,7 @@ import { globalStyles, resetStyles } from '../AppStyles';
 
 const MenuNav = () => {
   return (
-    <View style={[resetStyles.resetStyles, styles.background]}>
+    <View style={[resetStyles.resetStyles, styles.container]}>
       <View style={styles.text}>
         <View style={styles.navSection}>
           <Text>Profile</Text>
@@ -23,14 +23,19 @@ const MenuNav = () => {
 export default MenuNav;
 
 const styles = StyleSheet.create({
-  background: {
+  container: {
     position: 'absolute',
     width: '100%',
     height: '12%',
     bottom: 0,
-    backgroundColor: globalStyles.primaryColor,
-    justifyContent: 'center',
-    alignItems: 'center',
+    zIndex: 999, // Ensure it's on top of other content
+  },
+  text: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '100%',
+    fontSize: 30,
+    fontWeight: 'bold',
   },
   navSection: {
     flex: 1,
@@ -45,12 +50,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    flexDirection: 'row',
-    width: '100%',
-    height: '100%',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });
