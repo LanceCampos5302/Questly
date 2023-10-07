@@ -7,6 +7,7 @@ const ProfilePage = () => {
   return (
     <View style={[resetStyles.resetStyles, styles.background]}>
       {/* Top Section */}
+      
       <View style={styles.top}>
         {/* Centered Container for Text */}
         <View style={styles.centeredTextContainer}>
@@ -15,7 +16,7 @@ const ProfilePage = () => {
       </View>
 
       {/* Center Content */}
-      <View style={styles.centerContent}>
+      <View style={styles.centeredTextContainer}>
       <Text style={styles.ProfileText}>Profile</Text>
 
 
@@ -52,13 +53,17 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingTop: "12%",
     alignItems: 'center', // Center horizontally
-    backgroundColor: 'green',
+    JustifyContent: 'center',
+    
+    backgroundColor: globalStyles.primaryColor,
   },
   centerContent: {
     width: '100%',
     height: '72%',
     backgroundColor: 'blue',
     justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   bottomBlock: {
@@ -73,15 +78,25 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logoText: {
     fontSize: 60,
     fontWeight: 'bold',
     color: globalStyles.secondaryColor,
+    justifyContent: 'center',
+    alignItems: 'center',
+  
   },
   ProfileText: {
     fontSize: 60,
     fontWeight: '200',
-    color: globalStyles.secondaryColor,
+    color: globalStyles.primaryColor,
+    paddingTop: "0%",
+    width:'100%',
+    //justifyContent: 'center',
+    //alignItems: 'center', // Center horizontally
+    backgroundColor: globalStyles.secondaryColor,
   },
 });
