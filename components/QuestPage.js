@@ -8,7 +8,7 @@ const QuestPage = () => {
     <View style={[resetStyles.resetStyles, styles.background]}>
 
         <View style={[styles.top]}>
-            <Text style={styles.text}>Quest</Text>
+            <Text style={styles.text}></Text>
             <View style={styles.questNav}>
                 <View style={styles.navItem}>
                     <Text>Current</Text>
