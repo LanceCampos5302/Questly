@@ -7,6 +7,11 @@ const MenuNav = () => {
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
+  
+    // Check if the clicked section is "Profile" and navigate to the ProfilePage
+    if (section === 'Profile') {
+      navigation.navigate('ProfilePage'); // Use the name of your screen
+    }
   };
 
   return (

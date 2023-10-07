@@ -17,8 +17,6 @@ const LoginPage = () => {
   return (
     <View style={[styles.backround]}>
 
-    
-
       <Text style={[styles.text]}>Questly</Text>
 
       <View style={[styles.Look_Box]}>  
