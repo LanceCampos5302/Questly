@@ -74,9 +74,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'blue',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingTop: 20,
   },
   centerContentRow: {
-    flexDirection: 'colum',
+    flexDirection: 'column', // Correct the typo here
+    alignItems: 'center', // Center horizontally
     width: '100%',
     height: 120,
   },

@@ -5,15 +5,15 @@ import { globalStyles, resetStyles } from '../AppStyles';
 const MenuNav = () => {
   return (
     <View style={[resetStyles.resetStyles, styles.container]}>
-      <View style={styles.text}>
+      <View style={styles.navBox}>
         <View style={styles.navSection}>
-          <Text>Profile</Text>
+          <Text style={[styles.text]}>Profile</Text>
         </View>
-        <View style={styles.navMidSection}>
-          <Text>Quest</Text>
+        <View style={styles.navCenterSection}>
+          <Text style={[styles.centerText]}>Quest</Text>
         </View>
         <View style={styles.navSection}>
-          <Text>Radar</Text>
+          <Text style={[styles.text]}>Radar</Text>
         </View>
       </View>
     </View>
@@ -30,8 +30,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 999, // Ensure it's on top of other content
   },
-  text: {
+  navBox: {
     flexDirection: 'row',
+    justifyContent: 'space-between', // To evenly space the sections
     width: '100%',
     height: '100%',
     fontSize: 30,
@@ -39,16 +40,24 @@ const styles = StyleSheet.create({
   },
   navSection: {
     flex: 1,
-    height: '100%',
-    backgroundColor: 'green',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center', // Center horizontally
+    height: '100%',
+    backgroundColor: globalStyles.primaryColor,
   },
-  navMidSection: {
+  navCenterSection: {
     flex: 1,
-    height: '100%',
-    backgroundColor: 'red',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center', // Center horizontally
+    height: '100%',
+    backgroundColor: globalStyles.popColor,
+  },
+  text: {
+    fontSize: 30,
+    color: globalStyles.secondaryColor,
+  },
+  centerText: {
+    fontSize: 30,
+    color: globalStyles.primaryColor,
   },
 });

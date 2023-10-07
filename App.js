@@ -9,7 +9,7 @@ import ProfilePage from './components/ProfilePage';
 export default function App() {
   return (
     <View style={styles.container}>
-        <ProfilePage></ProfilePage>
+        <QuestPage></QuestPage>
         <StatusBar style="auto" />
     </View>
   );
