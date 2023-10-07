@@ -17,6 +17,8 @@ const LoginPage = () => {
   return (
     <View style={[styles.backround]}>
 
+    
+
       <Text style={[styles.text]}>Questly</Text>
 
       <View style={[styles.Look_Box]}>  
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  blue_text: {
+  blue_text: {//to be changed later for sign up hyperlink
     marginTop: 10,
     fontSize: 20,
     fontWeight: '300',
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontFamily:'serif',
   },
-  text: {
+  text: {//text for Questly
     fontSize: 70,
     fontWeight: '300',
     color: globalStyles.blackColor,
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
     color: globalStyles.primaryColor,
     //fontFamily: 'serif', 
   },
-  Look_Box: {
+  Look_Box: {//creates an outer box
     height: 295,
     width: 300,
     justifyContent: 'center',
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.primaryColor,
     padding: 10,
   },
-  User_input: {
+  User_input: {//box for username
     height: 40,
     width: 200,
     marginVertical:30,
@@ -96,7 +98,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  input: {
+  input: {//box for password
     height: 40,
     width: 200,
     marginVertical:10,

@@ -1,7 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
+
+const handleLogout = () => {
+  // Here you can call your API to logout
+  
+  
+}
 
 const ProfilePage = () => {
   return (
@@ -18,7 +24,10 @@ const ProfilePage = () => {
       {/* Center Content */}
       <View style={styles.centeredTextContainer}>
       <Text style={styles.ProfileText}>         Profile</Text>
-
+      <Text style={styles.User_Text}>Username</Text>
+      <TouchableOpacity style={styles.button} onPress={handleLogout}>
+        <Text style={styles.buttonText}>logout</Text>
+      </TouchableOpacity>
 
 
 
@@ -81,6 +90,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  User_Text:{
+    fontSize: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontWeight:'300',
+  },
   logoText: {
     fontSize: 60,
     fontWeight: 'bold',
@@ -98,5 +113,19 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     //alignItems: 'center', // Center horizontally
     backgroundColor: globalStyles.secondaryColor,
+  },
+  button: {
+    height: 70, // Increase this value for taller button
+    width: 290, // Increase this value for wider button
+    backgroundColor: globalStyles.popColor, // Set your desired color here
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 330,
+    borderRadius: 10,
+  },
+
+  buttonText: {
+    color: 'black',
+    fontSize: 25,
   },
 });
