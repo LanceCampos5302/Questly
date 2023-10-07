@@ -26,7 +26,7 @@ const ProfilePage = () => {
       <View style={styles.centeredTextContainer}>
       <Text style={styles.ProfileText}>         Profile</Text>
       <Text style={styles.logoText}>Username</Text>
-      <Text style={styles.text}>XP:</Text>
+      <Text style={styles.stat_text}>Trail XP: 254/500 | Fish XP: 37/50 | Food XP: 478/500</Text>
       
 
 
@@ -37,7 +37,7 @@ const ProfilePage = () => {
 
 
 
-      </View>
+      {/**/}</View>
 
       {/* Bottom Block */}
       <View style={styles.bottomBlock}></View>
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: '100%',
-    backgroundColor: globalStyles.popColor,
+    backgroundColor: globalStyles.primaryColor,
   },
   top: {
     width: '100%',
-    height: '16%',
+    height: '13%',
     backgroundColor: globalStyles.popColor,
     justifyContent: 'center',
     alignItems: 'center',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   centeredTextContainer: {
     width: '100%',
     height: '100%',
-    paddingTop: "10%",
+    paddingTop: "7%",
     alignItems: 'center', // Center horizontally
     JustifyContent: 'center',
     
@@ -96,8 +96,19 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     justifyContent: 'center',
     alignItems: 'center',
-    
+  
+  
+  
   },
+  stat_text: {
+    fontSize: 15,
+    fontWeight:'bold',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 320,
+  },
+
+
   User_Text:{
     fontSize: 40,
     justifyContent: 'center',
@@ -106,11 +117,13 @@ const styles = StyleSheet.create({
   },
   logoText: {
     fontSize: 60,
+    
     fontWeight: 'bold',
     color: globalStyles.secondaryColor,
     justifyContent: 'center',
     alignItems: 'center',
     //fontFamily:'serif',
+    
   
   },
   User_Text: {
@@ -125,8 +138,9 @@ const styles = StyleSheet.create({
     fontSize: 60,
     fontWeight: '300',
     color: globalStyles.primaryColor,
-    paddingTop: "0%",
+    paddingBottom: "0%",
     width:'100%',
+    //marginBottom: 300,//moves username and login button etc down
     //justifyContent: 'center',
     //alignItems: 'center', // Center horizontally
     backgroundColor: globalStyles.secondaryColor,
