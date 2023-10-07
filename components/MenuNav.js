@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 
+
 const MenuNav = () => {
   const [selectedSection, setSelectedSection] = useState('Quest'); // Initialize with the 'Quest' section as selected
 
   const handleSectionClick = (section) => {
     setSelectedSection(section);
-  
-    // Check if the clicked section is "Profile" and navigate to the ProfilePage
-    // if (section === 'Profile') {
-    //   navigation.navigate('ProfilePage'); // Use the name of your screen
-    // }
   };
 
   return (
