@@ -16,6 +16,10 @@ const ProfilePage = () => {
 
       {/* Center Content */}
       <View style={styles.centerContent}>
+      <Text style={styles.ProfileText}>Profile</Text>
+
+
+
 
       </View>
 
@@ -73,6 +77,11 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 60,
     fontWeight: 'bold',
+    color: globalStyles.secondaryColor,
+  },
+  ProfileText: {
+    fontSize: 60,
+    fontWeight: '200',
     color: globalStyles.secondaryColor,
   },
 });
