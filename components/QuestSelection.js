@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Vertically center items
     backgroundColor: 'white',
     width: '90%',
+    minHeight: 120,
     padding: 10,
     borderRadius: 10,
     marginBottom: 10,
@@ -39,9 +40,6 @@ const styles = StyleSheet.create({
   questIcon: {
     fontSize: 24,
     fontWeight: 'bold',
-  },
-  textContainer: {
-    flex: 1, // Take remaining horizontal space
   },
   questTitle: {
     fontSize: 18,

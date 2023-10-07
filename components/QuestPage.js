@@ -19,7 +19,7 @@ const QuestPage = () => {
           <View style={styles.navItem}>
             <Text style={[styles.text]}>Current</Text>
           </View>
-          <View style={styles.navItem}>
+          <View style={[styles.navItem, styles.navItemSelected]}>
             <Text style={[styles.text]}>New</Text>
           </View>
           <View style={styles.navItem}>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingTop: "12%",
     alignItems: 'center', // Center horizontally
-    backgroundColor: 'green',
+    backgroundColor: globalStyles.primaryColor,
   },
   centerContent: {
     width: '100%',
@@ -85,21 +85,26 @@ const styles = StyleSheet.create({
   bottomBlock: {
     width: '100%',
     height: '20%',
-    backgroundColor: '#fff',
   },
   questNav: {
     position: 'absolute',
     bottom: 0,
     width: '100%',
     height: '35%',
-    backgroundColor: globalStyles.secondaryColor,
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottomWidth: 4, // Set the border width as needed
+    borderBottomColor: globalStyles.secondaryColor, // Set the border color as needed
   },
   navItem: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: '100%',
+  },
+  navItemSelected: {
+    backgroundColor: globalStyles.popColor,
+
   },
   text: {
     fontSize: 30,
