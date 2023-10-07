@@ -17,7 +17,7 @@ const ProfilePage = () => {
 
       {/* Center Content */}
       <View style={styles.centeredTextContainer}>
-      <Text style={styles.ProfileText}>Profile</Text>
+      <Text style={styles.ProfileText}>         Profile</Text>
 
 
 
