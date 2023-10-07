@@ -15,7 +15,10 @@ const LoginPage = () => {
   }
 
   return (
-    <View style={[styles.container]}>
+    <View style={[styles.backround]}>
+
+    
+
       <Text style={[styles.text]}>Questly</Text>
 
       <View style={[styles.Look_Box]}>  
@@ -34,34 +37,35 @@ const LoginPage = () => {
         value={password}
         secureTextEntry
       />
-    </View>
+    
       <Button title="Login" onPress={handleLogin} />
     </View>
-    
+    </View>
   );
 };
 
 export default LoginPage;
 
 const styles = StyleSheet.create({
-  container: {
+  backround:{//outermost container controls
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#22333B',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 16,
   },
   text: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 70,
+    fontWeight: '300',
     color: globalStyles.primaryColor,
-    marginBottom: 16,
+    marginBottom: 150,
   },
   Title: {
     fontsize: 100,
     fontWeight: 'bold',
     color: globalStyles.primaryColor,
     //fontFamily: 'cochin', 
-    
   },
   Look_Box: {
     height: 300,
@@ -71,10 +75,9 @@ const styles = StyleSheet.create({
     color: globalStyles.primaryColor,
     marginBottom: 20,
     borderWidth: 10,
+    backgroundColor: globalStyles.primaryColor,
     padding: 10,
   },
-
-
   input: {
     height: 40,
     width: 200,
