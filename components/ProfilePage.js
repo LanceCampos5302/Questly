@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
@@ -25,8 +26,12 @@ const ProfilePage = () => {
       <View style={styles.centeredTextContainer}>
       <Text style={styles.ProfileText}>         Profile</Text>
       <Text style={styles.logoText}>Username</Text>
+      <Text style={styles.text}>XP:</Text>
+      
+
+
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>logout</Text>
+        <Text style={styles.buttonText}>Logout</Text>
       </TouchableOpacity>
       <Text style={styles.text}>App created by Team Lead Danyal Siddiqi and his assistant Lance Campos</Text>
 
@@ -87,7 +92,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 12,
+    fontSize: 15,
+    fontWeight:'bold',
     justifyContent: 'center',
     alignItems: 'center',
     
@@ -104,11 +110,20 @@ const styles = StyleSheet.create({
     color: globalStyles.secondaryColor,
     justifyContent: 'center',
     alignItems: 'center',
+    //fontFamily:'serif',
+  
+  },
+  User_Text: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: globalStyles.secondaryColor,
+    justifyContent: 'center',
+    alignItems: 'center',
   
   },
   ProfileText: {
     fontSize: 60,
-    fontWeight: '200',
+    fontWeight: '300',
     color: globalStyles.primaryColor,
     paddingTop: "0%",
     width:'100%',
@@ -122,12 +137,13 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.popColor, // Set your desired color here
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 300,
+    //marginTop: 300,
     borderRadius: 10,
   },
 
   buttonText: {
-    color: 'black',
+    color: 'white',
+    fontSize:'Bold',
     fontSize: 25,
   },
 });
