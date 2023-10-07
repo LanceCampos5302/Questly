@@ -1,10 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
 import QuestSelection from './QuestSelection';
 
 const QuestPage = () => {
+  const [selectedNavItem, setSelectedNavItem] = useState('New'); // Initialize with 'New' selected
+
+  const handleNavItemPress = (item) => {
+    setSelectedNavItem(item);
+  };
+
   return (
     <View style={[resetStyles.resetStyles, styles.background]}>
       {/* Top Section */}
@@ -13,34 +19,48 @@ const QuestPage = () => {
         <View style={styles.centeredTextContainer}>
           <Text style={styles.logoText}>Questly</Text>
         </View>
-        
+
         {/* QuestNav at the bottom of the Top Section */}
         <View style={styles.questNav}>
-          <View style={styles.navItem}>
+          <TouchableOpacity
+            style={[
+              styles.navItem,
+              selectedNavItem === 'Current' && styles.navItemSelected,
+            ]}
+            onPress={() => handleNavItemPress('Current')}
+          >
             <Text style={[styles.text]}>Current</Text>
-          </View>
-          <View style={[styles.navItem, styles.navItemSelected]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.navItem,
+              selectedNavItem === 'New' && styles.navItemSelected,
+            ]}
+            onPress={() => handleNavItemPress('New')}
+          >
             <Text style={[styles.text]}>New</Text>
-          </View>
-          <View style={styles.navItem}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.navItem,
+              selectedNavItem === 'Past' && styles.navItemSelected,
+            ]}
+            onPress={() => handleNavItemPress('Past')}
+          >
             <Text style={[styles.text]}>Past</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
 
       {/* Center Content */}
       <View style={styles.centerContent}>
         <View style={styles.centerContentRow}>
-          <QuestSelection></QuestSelection>
-          <QuestSelection></QuestSelection>
-          <QuestSelection></QuestSelection>
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
         </View>
       </View>
 
-      {/* Bottom Block */}
-      <View style={styles.bottomBlock}></View>
-
-      {/* MenuNav */}
       <MenuNav />
     </View>
   );
@@ -52,39 +72,35 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: '100%',
-    backgroundColor: globalStyles.popColor,
+    backgroundColor: globalStyles.secondaryColor,
   },
   top: {
     width: '100%',
     height: '25%',
-    backgroundColor: globalStyles.popColor,
+    backgroundColor: globalStyles.primaryColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
   centeredTextContainer: {
     width: '100%',
     height: '100%',
-    paddingTop: "12%",
+    paddingTop: '12%',
     alignItems: 'center', // Center horizontally
     backgroundColor: globalStyles.primaryColor,
   },
   centerContent: {
     width: '100%',
-    height: '70%',
+    height: '80%',
     backgroundColor: 'blue',
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 20,
   },
   centerContentRow: {
-    flexDirection: 'column', // Correct the typo here
+    flexDirection: 'column',
     alignItems: 'center', // Center horizontally
     width: '100%',
     height: 120,
-  },
-  bottomBlock: {
-    width: '100%',
-    height: '20%',
   },
   questNav: {
     position: 'absolute',
@@ -93,8 +109,8 @@ const styles = StyleSheet.create({
     height: '35%',
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 4, // Set the border width as needed
-    borderBottomColor: globalStyles.secondaryColor, // Set the border color as needed
+    borderBottomWidth: 4,
+    borderBottomColor: globalStyles.secondaryColor,
   },
   navItem: {
     flex: 1,
@@ -104,7 +120,6 @@ const styles = StyleSheet.create({
   },
   navItemSelected: {
     backgroundColor: globalStyles.popColor,
-
   },
   text: {
     fontSize: 30,
