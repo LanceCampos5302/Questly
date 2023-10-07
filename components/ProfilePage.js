@@ -24,10 +24,11 @@ const ProfilePage = () => {
       {/* Center Content */}
       <View style={styles.centeredTextContainer}>
       <Text style={styles.ProfileText}>         Profile</Text>
-      <Text style={styles.User_Text}>Username</Text>
+      <Text style={styles.logoText}>Username</Text>
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>logout</Text>
       </TouchableOpacity>
+      <Text style={styles.text}>App created by Team Lead Danyal Siddiqi and his assistant Lance Campos</Text>
 
 
 
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   centeredTextContainer: {
     width: '100%',
     height: '100%',
-    paddingTop: "12%",
+    paddingTop: "10%",
     alignItems: 'center', // Center horizontally
     JustifyContent: 'center',
     
@@ -86,9 +87,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 30,
+    fontSize: 12,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   User_Text:{
     fontSize: 40,
@@ -120,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: globalStyles.popColor, // Set your desired color here
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 330,
+    marginTop: 300,
     borderRadius: 10,
   },
 
