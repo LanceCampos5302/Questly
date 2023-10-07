@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const globalStyles = {
-    primaryColor: '#2a2929',
+    primaryColor: '#cf1717',
     secondaryColor: '#232222',
     mainFont: 'Bebas Neue',
     cassetteBackground: '#121211',
