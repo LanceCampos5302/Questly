@@ -1,73 +1,88 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity , KeyboardAvoidingView} from 'react-native';
-import { globalStyles, resetStyles } from '../AppStyles'
-//imports needs for login functions
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import axios from 'axios'; // Import Axios for making HTTP requests
+import { globalStyles, resetStyles } from '../AppStyles';
 
 const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [Pass_confirm, setconfirm]=useState('');
-  const [email, setEmail]=useState('');
+  const [passConfirm, setPassConfirm] = useState('');
+  const [email, setEmail] = useState('');
 
-  const handleLogin = () => {
-    // Here you can call your API to log in the user with username and password
-    
-    console.log(username, password);
+  const handleSignUp = async () => {
+    try {
+      // Validate input (you can add more validation logic here)
+      if (username === '' || password === '' || passConfirm === '' || email === '') {
+        console.log('Please fill in all fields.');
+        return;
+      }
+
+      if (password !== passConfirm) {
+        console.log('Passwords do not match.');
+        return;
+      }
+
+      // Create an object with user registration data
+      const userData = {
+        username,
+        password,
+        email,
+      };
+
+      // Send a POST request to your server for user registration
+      const response = await axios.post('http://your-server-ip:3000/register', userData);
+
+      // Handle the response from the server (e.g., display a success message or navigate to the login page)
+      console.log('Registration successful!', response.data);
+
+    } catch (error) {
+      console.error('Registration failed:', error);
+    }
   }
 
   return (
-    
-    <View style={[styles.backround]}>
-    
-    
-
+    <View style={[styles.background]}>
       <Text style={[styles.text]}>Questly</Text>
-
-      <View style={[styles.Look_Box]}>  
-      
-      <TextInput
-        style={styles.User_input}
-        placeholder="Username"
-        onChangeText={setUsername}
-        value={username}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={setEmail}
-        value={email}
-      />
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={setPassword}
-        value={password}
-        secureTextEntry
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        onChangeText={setconfirm}
-        value={Pass_confirm}
-      />  
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Sign Up!</Text>
-      </TouchableOpacity>
-      <Text style={[styles.blue_text]}>Have an account? Log in!</Text>
-       
+      <View style={[styles.Look_Box]}>
+        <TextInput
+          style={styles.User_input}
+          placeholder="Username"
+          onChangeText={setUsername}
+          value={username}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          onChangeText={setEmail}
+          value={email}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          onChangeText={setPassword}
+          value={password}
+          secureTextEntry
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          onChangeText={setPassConfirm}
+          value={passConfirm}
+          secureTextEntry
+        />
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+          <Text style={styles.buttonText}>Sign Up!</Text>
+        </TouchableOpacity>
+        <Text style={[styles.blue_text]}>Have an account? Log in!</Text>
+      </View>
     </View>
-    
-    </View>
-    
   );
 };
 
-export default SignUpPage ;
+export default SignUpPage;
 
 const styles = StyleSheet.create({
-  backround:{//outermost container controls
+  backround:{
     width: '100%',
     height: '100%',
     backgroundColor: globalStyles.secondaryColor,
@@ -86,7 +101,7 @@ const styles = StyleSheet.create({
   text: {//text for Questly
     fontSize: 70,
     fontWeight: '300',
-    color: globalStyles.blackColor,
+    color: globalStyles.secondaryColor,
     marginBottom: 50,
     fontFamily:'serif',
   },
@@ -127,9 +142,9 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    height: 50, // Increase this value for taller button
-    width: 250, // Increase this value for wider button
-    backgroundColor: globalStyles.popColor, // Set your desired color here
+    height: 50,
+    width: 250,
+    backgroundColor: globalStyles.popColor,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
