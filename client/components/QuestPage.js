@@ -40,15 +40,7 @@ const QuestPage = () => {
           >
             <Text style={[styles.text]}>New</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.navItem,
-              selectedNavItem === 'Past' && styles.navItemSelected,
-            ]}
-            onPress={() => handleNavItemPress('Past')}
-          >
-            <Text style={[styles.text]}>Past</Text>
-          </TouchableOpacity>
+
         </View>
       </View>
 
@@ -70,8 +62,7 @@ const QuestPage = () => {
   </ScrollView>
 </View>
 
-
-      <MenuNav />
+      <MenuNav/>
     </View>
   );
 };
@@ -82,12 +73,10 @@ const styles = StyleSheet.create({
   background: {
     width: '100%',
     height: '100%',
-    backgroundColor: globalStyles.secondaryColor,
   },
   top: {
     width: '100%',
     height: '25%',
-    backgroundColor: globalStyles.primaryColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -96,12 +85,10 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingTop: '12%',
     alignItems: 'center', // Center horizontally
-    backgroundColor: globalStyles.primaryColor,
   },
   centerContent: {
     width: '100%',
     height: '80%',
-    backgroundColor: 'blue',
     justifyContent: 'flex-start',
   },
   centerContentRow: {

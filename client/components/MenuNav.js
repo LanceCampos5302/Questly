@@ -37,15 +37,6 @@ const MenuNav = () => {
         >
           <Text style={[styles.text, isQuestPage && styles.centerText]}>Quest</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={[
-            styles.navSection,
-            !isQuestPage && !isProfilePage && styles.navCenterSection,
-          ]}
-          onPress={() => handleSectionClick('Radar')}
-        >
-          <Text style={[styles.text, !isQuestPage && !isProfilePage && styles.centerText]}>Radar</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
