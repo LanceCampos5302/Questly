@@ -4,7 +4,7 @@ import { globalStyles, resetStyles } from '../AppStyles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const MenuNav = () => {
-  const [selectedSection, setSelectedSection] = useState('Quest'); // Initialize with the 'Quest' section as selected
+  const [selectedSection, setSelectedSection] = useState('Quest');
   const navigation = useNavigation();
   const route = useRoute();
 

@@ -14,11 +14,41 @@ const LoginPage = () => {
     navigation.navigate('SignUp');
   }
 
-  const handleLogin = () => {
-    // Here you can call your API to log in the user with username and password
-    
-    console.log(username, password);
+  const LoginSuccess = () => {
+    navigation.navigate('QuestPage');
   }
+
+  const handleLogin = () => {
+    console.log(username);
+    console.log(password);
+  
+    // Send user data in the request body
+    fetch('http://10.0.2.2:8000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json', // Specify the content type as JSON
+      },
+      body: JSON.stringify({ username, password }), // Send username and password as JSON
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === 'User created successfully') {
+          console.log('Login successful');
+          LoginSuccess();
+        } else {
+          console.log('User not found or incorrect password');
+          // Handle user not found or incorrect password
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Handle errors
+      });
+  
+    console.log(username, password);
+  };
+  
+  
 
   return (
     <View style={[styles.backround]}>
