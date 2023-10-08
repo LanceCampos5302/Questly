@@ -5,6 +5,7 @@ import SignUpPage from './components/SignUpPage';
 import MenuPage from './components/MenuPage';
 import QuestPage from './components/QuestPage';
 import ProfilePage from './components/ProfilePage';
+import TestComponent from './components/Test';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,6 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="QuestPage">
+        <Stack.Screen name="Test" component={TestComponent} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={LoginPage} options={{ headerShown: false }} />
         <Stack.Screen name="SignUp" component={SignUpPage} options={{ headerShown: false }} />
         <Stack.Screen name="Menu" component={MenuPage} options={{ headerShown: false }} />
@@ -22,7 +24,6 @@ export default function App() {
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
-
   );
 }
 

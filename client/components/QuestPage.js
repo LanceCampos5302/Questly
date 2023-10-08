@@ -2,13 +2,39 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
+import axios from 'axios';
+import { GOOGLE_PLACES_API_KEY } from './config.js';
 import QuestSelection from './QuestSelection';
-
 import * as Location from 'expo-location';
+
+async function fetchPlaces(location) {
+
+  try {
+    const response = await axios.get(
+      'https://maps.googleapis.com/maps/api/place/nearbysearch/json?&location=34.0489,-111.0937&radius=1500&type=Outside&key=' + GOOGLE_PLACES_API_KEY
+
+      );
+
+    // Handle the response data here
+    const places = response.data.results.slice(0, 30);
+
+    // places.forEach((place) => {
+    //   console.log('Name:', place.name);
+    //   console.log('Address:', place.vicinity);
+    //   console.log('------------------------');
+    // });
+    return places;
+  } catch (error) {
+    // Handle errors here
+    console.error(error);
+    return [];
+  }
+}
 
 const QuestPage = () => {
   const [selectedNavItem, setSelectedNavItem] = useState('New'); // Initialize with 'New' selected
   const [location, setLocation] = useState(null);
+  const [placesData, setPlacesData] = useState([]);
   const [errorMsg, setErrorMsg] = useState(null);
 
   const handleNavItemPress = (item) => {
@@ -23,9 +49,17 @@ const QuestPage = () => {
           setErrorMsg('Permission to access location was denied');
           return;
         }
+        //const userLocation = await Location.getCurrentPositionAsync({});
+        userLocation = { latitude: 123.45, longitude: 67.89 }
+        setLocation(userLocation);
 
-        const location = await Location.getCurrentPositionAsync({});
-        setLocation(location);
+        // Fetch places when location is available
+        if (userLocation) {
+          fetchPlaces(userLocation).then((places) => {
+            setPlacesData(places);
+            fetchPlaces(userLocation);
+          });
+        }
       } catch (error) {
         setErrorMsg('Error fetching location: ' + error.message);
       }
@@ -64,30 +98,16 @@ const QuestPage = () => {
         </View>
       </View>
 
-      {/* Display Location
-      {location && (
-        <View style={styles.locationContainer}>
-          <Text style={styles.locationText}>
-            Latitude: {location.coords.latitude}, Longitude: {location.coords.longitude}
-          </Text>
-        </View>
-      )}
-       */}
-
       {/* Center Content */}
       <View style={styles.centerContent}>
+      
         <ScrollView contentContainerStyle={styles.centerContentRow}>
           <View style={styles.bufferTop}></View>
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
-          <QuestSelection />
+          {/* Add a Text tag for each place in placesData */}
+          {placesData.map((place, index) => (
+              <QuestSelection name={place.name} address={place.business_status} url={place.types} next={place.international_phone_number}/>
+          ))}
+
           <View style={styles.bufferBottom}></View>
         </ScrollView>
       </View>

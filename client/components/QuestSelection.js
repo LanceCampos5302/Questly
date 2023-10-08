@@ -2,18 +2,20 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 
-const QuestComponent = ({ title, description }) => {
+const QuestComponent = (props) => {
   return (
     <View style={styles.container}>
+    {/* 
       <View style={styles.iconContainer}>
-        {/* Add your quest icon or image here */}
-        <Text style={styles.questIcon}>Icon</Text>
-      </View>
+        Add your quest icon or image here 
+        <Text style={styles.questIcon}>{props.icon}</Text>
+      </View>*/}
       <View style={styles.textContainer}>
-        <Text style={styles.questTitle}>Wekiva Bear Trail</Text>
+        <Text style={styles.questTitle}>{props.name}</Text>
         <View style={styles.questInfoBox}>
-            <Text style={styles.questInfo}>12.5 Miles</Text>
-            <Text style={styles.questInfo}>$$$</Text>
+            <Text style={styles.questInfo}>{props.address}</Text>
+            <Text style={styles.questInfo}>{props.url}</Text>
+            <Text style={styles.questInfo}>{props.next}</Text>
         </View>
       </View>
     </View>
@@ -28,16 +30,15 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     backgroundColor: 'white',
     width: '90%',
-    height: 110,
-    padding: 10,
+    height: 150,
     borderRadius: 10,
     marginBottom: 10,
-    elevation: 2,
+    elevation: 5,
+    borderWidth: 8, 
   },
   iconContainer: {
     backgroundColor: 'lightblue',
-    padding: 10,
-    borderRadius: 10,
+    padding: 0,
     marginRight: 10,
   },
   questIcon: {
@@ -46,27 +47,29 @@ const styles = StyleSheet.create({
   },
   textContainer: {
    // backgroundColor: 'red',
-    width: "75%",
+    width: "100%",
     height: "100%",
     textAlign: 'center',
     alignItems: 'center',
+    
   },
   questTitle: {
-    fontSize: 28,
+    fontSize: 22,
     paddingTop: '3%',
     fontWeight: 'bold',
     marginBottom: 5,
+    color: globalStyles.popColor,
+    
   },
   questInfoBox: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '70%',
-    height: '30%',
+
    // backgroundColor: globalStyles.primaryColor,
   },
   questInfo: {
-    fontSize: 25,
+    fontSize: 15,
     fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'center',
   },
 });
 
