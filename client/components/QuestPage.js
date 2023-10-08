@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
 import MenuNav from './MenuNav';
 import QuestSelection from './QuestSelection';
 
+import * as Location from 'expo-location';
+
 const QuestPage = () => {
   const [selectedNavItem, setSelectedNavItem] = useState('New'); // Initialize with 'New' selected
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const handleNavItemPress = (item) => {
     setSelectedNavItem(item);
   };
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied');
+          return;
+        }
+
+        const location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
+      } catch (error) {
+        setErrorMsg('Error fetching location: ' + error.message);
+      }
+    })();
+  }, []);
 
   return (
     <View style={[resetStyles.resetStyles, styles.background]}>
@@ -40,29 +61,38 @@ const QuestPage = () => {
           >
             <Text style={[styles.text]}>New</Text>
           </TouchableOpacity>
-
         </View>
       </View>
 
-{/* Center Content */}
-<View style={styles.centerContent}>
-  <ScrollView contentContainerStyle={styles.centerContentRow}>
-  <View style={styles.bufferTop}></View>
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <QuestSelection />
-    <View style={styles.bufferBottom}></View>
-  </ScrollView>
-</View>
+      {/* Display Location
+      {location && (
+        <View style={styles.locationContainer}>
+          <Text style={styles.locationText}>
+            Latitude: {location.coords.latitude}, Longitude: {location.coords.longitude}
+          </Text>
+        </View>
+      )}
+       */}
 
-      <MenuNav/>
+      {/* Center Content */}
+      <View style={styles.centerContent}>
+        <ScrollView contentContainerStyle={styles.centerContentRow}>
+          <View style={styles.bufferTop}></View>
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <QuestSelection />
+          <View style={styles.bufferBottom}></View>
+        </ScrollView>
+      </View>
+
+      <MenuNav />
     </View>
   );
 };
