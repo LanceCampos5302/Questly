@@ -1,66 +1,46 @@
-const express = require('express');
-const { MongoClient } = require('mongodb');
-const bcrypt = require('bcrypt');
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
-const app = express();
-const port = 3000;
+require('dotenv').config();
 
-app.use(express.json());
+var app = express();
+app.use(bodyParser.json());
 
-// Connect to your MongoDB cluster
-const uri = 'mongodb+srv://root:Grape56Purple@questly.qjkpbts.mongodb.net/';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+app.get('/', function (req, res) {  
+    res.send('Welcome to JavaTpoint!');  
+  });  
+  var server = app.listen(8000, function () {  
+    var host = server.address().address;  
+    var port = server.address().port;  
+    console.log('Example app listening at http://%s:%s', host, port);  
+  });  
 
-// Handle user registration
-app.post('/register', async (req, res) => {
-  try {
-    const { username, password, email } = req.body;
 
-    // Validate input (add more validation as needed)
-    if (!username || !password || !email) {
-      return res.status(400).json({ message: 'Please provide valid username, password, and email.' });
-    }
+mongoose.connect(process.env.URI);
 
-    // Hash the password before saving it
-    const hashedPassword = await bcrypt.hash(password, 10);
+app.post('/users', function (req) {  
+    //res.send('Welcome to JavaTpoint!'); 
 
-    // Insert the user data into MongoDB
-    const database = client.db('Questly');
-    const collection = database.collection('Users');
+    
+    var reqBody = req.body;
+    console.log(reqBody["user"]);
+    
+    const userSchema = new mongoose.Schema({
+        username: String,
+        email: String,
+        password: String
+      });
 
-    const user = {
-      username,
-      password: hashedPassword,
-      email,
-    };
+    var username = reqBody["username"];
+    var email = reqBody["email"];
+    var password = reqBody["password"];
+    
+    const user = mongoose.model('user', userSchema);
+    
+    const person = new user({ username: username, email: email, password: password});
+    console.log(person.username); 
+    person.save();
 
-    const result = await collection.insertOne(user);
-
-    res.status(201).json({ message: 'Registration successful!', insertedId: result.insertedId });
-  } catch (error) {
-    console.error('Registration failed:', error);
-    res.status(500).json({ message: 'Registration failed.' });
-  }
-});
-
-// Start the server
-async function main() {
-  try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-
-    const database = client.db('Questly');
-    const collection = database.collection('Users');
-
-    // Define your API routes and MongoDB interactions here
-
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-main().catch(console.error);
+  });  
 
