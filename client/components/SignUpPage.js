@@ -1,70 +1,81 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity , KeyboardAvoidingView} from 'react-native';
-import { globalStyles, resetStyles } from '../AppStyles'
-//imports needs for login functions
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { globalStyles, resetStyles } from '../AppStyles';
 
 const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [Pass_confirm, setconfirm]=useState('');
-  const [email, setEmail]=useState('');
+  const [Pass_confirm, setconfirm] = useState('');
+  const [email, setEmail] = useState('');
 
-  const handleLogin = () => {
-    // Here you can call your API to log in the user with username and password
-    
-    console.log(username, password);
-  }
+  const handleSignUp = () => {
+    const data = {
+      username,
+      email,
+      password,
+    };
+    console.log(username);
+    console.log(email);
+    console.log(password);
+
+    // Make a POST request to your server
+    fetch('http://10.0.2.2:8000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Response from server:', data);
+        // Handle the server response as needed
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        // Handle errors
+      });
+  };
 
   return (
-    
     <View style={[styles.backround]}>
-    
-    
-
       <Text style={[styles.text]}>Questly</Text>
-
-      <View style={[styles.Look_Box]}>  
-      
-      <TextInput
-        style={styles.User_input}
-        placeholder="Username"
-        onChangeText={setUsername}
-        value={username}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={setEmail}
-        value={email}
-      />
-      
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={setPassword}
-        value={password}
-        secureTextEntry
-      />
-
-      <TextInput
-        style={styles.input}
-        placeholder="Confirm Password"
-        onChangeText={setconfirm}
-        value={Pass_confirm}
-      />  
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Sign Up!</Text>
-      </TouchableOpacity>
-      <Text style={[styles.blue_text]}>Have an account? Log in!</Text>
-       
+      <View style={[styles.Look_Box]}>
+        <TextInput
+          style={styles.User_input}
+          placeholder="Username"
+          onChangeText={setUsername}
+          value={username}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          onChangeText={setEmail}
+          value={email}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          onChangeText={setPassword}
+          value={password}
+          secureTextEntry
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          onChangeText={setconfirm}
+          value={Pass_confirm}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+          <Text style={styles.buttonText}>Sign Up!</Text>
+        </TouchableOpacity>
+        <Text style={[styles.blue_text]}>Have an account? Log in!</Text>
+      </View>
     </View>
-    
-    </View>
-    
   );
 };
 
-export default SignUpPage ;
+export default SignUpPage;
 
 const styles = StyleSheet.create({
   backround:{//outermost container controls

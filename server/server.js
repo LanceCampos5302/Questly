@@ -16,13 +16,10 @@ app.get('/', function (req, res) {
     console.log('Example app listening at http://%s:%s', host, port);  
   });  
 
-
 mongoose.connect(process.env.URI);
 
 app.post('/users', function (req) {  
     //res.send('Welcome to JavaTpoint!'); 
-
-    
     var reqBody = req.body;
     console.log(reqBody["user"]);
     
@@ -41,6 +38,5 @@ app.post('/users', function (req) {
     const person = new user({ username: username, email: email, password: password});
     console.log(person.username); 
     person.save();
-
   });  
 
