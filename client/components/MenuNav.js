@@ -26,7 +26,7 @@ const MenuNav = () => {
           ]}
           onPress={() => handleSectionClick('Profile')}
         >
-          <Text style={[styles.text, isProfilePage && styles.centerText]}>Profile</Text>
+          <Text style={[styles.text, isProfilePage && styles.centerText]}>Settings</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[

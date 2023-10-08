@@ -26,15 +26,14 @@ const ProfilePage = () => {
 
       {/* Center Content */}
       <View style={styles.centeredTextContainer}>
-      <Text style={[styles.logoText, styles.profile]}>Profile</Text>
-      <Text style={styles.logoText}>MobPoison</Text>
-      <View style={styles.levelBox}>
-        <Text style={styles.levelText}>Lvl: 21</Text>
-      </View>
+      <Text style={[styles.logoText, styles.profile]}>Settings</Text>
+      <Text style={styles.messageText}>Questly is an app that lets you do the discovering.We give 
+      you a general idea of where to go for an adventure and you do the rest. The world is in your hands.
+      Are these locations safe? Yes? It is up to you. There is only one person that can give you an adventure
+      and that is you. So go off and find something, or nothing, but that will all be part of the quest.
       
-      <Text style={styles.stat_text}>Nature XP: 254/500 </Text>
-      <Text style={styles.stat_text}>Fishing XP: 37/50 </Text>
-      <Text style={styles.stat_text}>Food XP: 478/500 </Text>
+      </Text>
+      
 
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText} onPress={() => Login()}>Logout</Text>
@@ -81,6 +80,14 @@ const styles = StyleSheet.create({
   },
   logoText: {
     fontSize: 60,
+    fontWeight: 'bold',
+    color: globalStyles.secondaryColor,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  messageText: {
+    fontSize: 25,
+    padding: '5%',
     fontWeight: 'bold',
     color: globalStyles.secondaryColor,
     justifyContent: 'center',

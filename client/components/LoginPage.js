@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   text: {//text for Questly
     fontSize: 70,
     fontWeight: '300',
-    color: globalStyles.blackColor,
+    color: globalStyles.popColor,
     marginBottom: 50,
     fontFamily:'serif',
   },

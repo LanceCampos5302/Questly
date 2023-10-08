@@ -32,7 +32,7 @@ async function fetchPlaces(location) {
 }
 
 const QuestPage = () => {
-  const [selectedNavItem, setSelectedNavItem] = useState('New'); // Initialize with 'New' selected
+  const [selectedNavItem, setSelectedNavItem] = useState('Current'); // Initialize with 'New' selected
   const [location, setLocation] = useState(null);
   const [placesData, setPlacesData] = useState([]);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -84,8 +84,9 @@ const QuestPage = () => {
             ]}
             onPress={() => handleNavItemPress('Current')}
           >
-            <Text style={[styles.text]}>Current</Text>
+            <Text style={[styles.text]}>Quest</Text>
           </TouchableOpacity>
+          {/*}
           <TouchableOpacity
             style={[
               styles.navItem,
@@ -94,7 +95,7 @@ const QuestPage = () => {
             onPress={() => handleNavItemPress('New')}
           >
             <Text style={[styles.text]}>New</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
         </View>
       </View>
 
@@ -105,8 +106,14 @@ const QuestPage = () => {
           <View style={styles.bufferTop}></View>
           {/* Add a Text tag for each place in placesData */}
           {placesData.map((place, index) => (
-              <QuestSelection name={place.name} address={place.business_status} url={place.types} next={place.international_phone_number}/>
-          ))}
+  <QuestSelection
+    key={index} // Add a unique key prop
+    name={place.name}
+    address={place.business_status}
+    url={place.types}
+    next={place.website}
+  />
+))}
 
           <View style={styles.bufferBottom}></View>
         </ScrollView>
