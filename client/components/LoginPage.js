@@ -2,11 +2,17 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles'
-//imports needs for login functions
+import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigation = useNavigation();
+
+  const SignUpLink = () => {
+    navigation.navigate('SignUp');
+  }
 
   const handleLogin = () => {
     // Here you can call your API to log in the user with username and password
@@ -16,8 +22,6 @@ const LoginPage = () => {
 
   return (
     <View style={[styles.backround]}>
-
-    
 
       <Text style={[styles.text]}>Questly</Text>
 
@@ -41,7 +45,7 @@ const LoginPage = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <Text style={[styles.blue_text]}>No login? Sign up!</Text>
+      <Text style={[styles.blue_text]} onPress={() => SignUpLink()}>No login? Sign up!</Text>
     </View>
     </View>
   );
@@ -58,13 +62,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  blue_text: {//to be changed later for sign up hyperlink
+  blue_text: {
     marginTop: 10,
     fontSize: 20,
     fontWeight: '300',
     color: 'blue',
-    marginBottom: 10,
     fontFamily:'serif',
+    textDecorationLine: 'underline',
   },
   text: {//text for Questly
     fontSize: 70,

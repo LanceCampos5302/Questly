@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { globalStyles, resetStyles } from '../AppStyles';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 
 const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [Pass_confirm, setconfirm] = useState('');
   const [email, setEmail] = useState('');
+
+  const navigation = useNavigation();
+
+  const loginLink = () => {
+    navigation.navigate('Login');
+  }
 
   const handleSignUp = () => {
     const data = {
@@ -65,11 +73,12 @@ const SignUpPage = () => {
           placeholder="Confirm Password"
           onChangeText={setconfirm}
           value={Pass_confirm}
+          secureTextEntry
         />
         <TouchableOpacity style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>Sign Up!</Text>
         </TouchableOpacity>
-        <Text style={[styles.blue_text]}>Have an account? Log in!</Text>
+        <Text style={[styles.blue_text]} onPress={() => loginLink()}>Have an account? Log in!</Text>
       </View>
     </View>
   );
@@ -93,6 +102,7 @@ const styles = StyleSheet.create({
     color: 'blue',
     marginBottom: 10,
     fontFamily:'serif',
+    textDecorationLine: 'underline',
   },
   text: {//text for Questly
     fontSize: 70,
